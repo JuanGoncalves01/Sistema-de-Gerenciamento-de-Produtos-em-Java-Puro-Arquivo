@@ -12,15 +12,17 @@ public class MenuProdutos {
     public void exibirMenu() {
         int opcao = 0;
 
-        while (opcao != 3) {
+        while (opcao != 5) { // O loop agora continua até a opção 5 ser escolhida
             System.out.println("\n Sistema de Gerenciamento de Produtos ");
             System.out.println("1. Cadastrar Produto");
             System.out.println("2. Listar Produtos");
-            System.out.println("3. Sair");
+            System.out.println("3. Deletar Produtos");
+            System.out.println("4. Atualizar Produtos");
+            System.out.println("5. Sair");
             System.out.print("Escolha uma opção: ");
 
             opcao = scanner.nextInt(); // Lê a opção escolhida
-            scanner.nextLine(); // Limpa
+            scanner.nextLine(); // Limpa o buffer
 
             switch (opcao) {
                 case 1:
@@ -30,7 +32,13 @@ public class MenuProdutos {
                     listarProdutos();
                     break;
                 case 3:
-                    System.out.println("Saindo...");
+                    deletarProduto(); // Deletar produto
+                    break;
+                case 4:
+                    atualizarProduto(); // Atualizar produto
+                    break;
+                case 5:
+                    System.out.println("Saindo do sistema...");
                     break;
                 default:
                     System.out.println("Opção inválida! Tente novamente.");
@@ -38,6 +46,7 @@ public class MenuProdutos {
             }
         }
     }
+
 
 
     private void cadastrarProduto() {
@@ -69,5 +78,19 @@ public class MenuProdutos {
         for (Produto produto : gerenciador.listarTodos()) {
             System.out.println(produto);
         }
+    }
+    private void  deletarProduto(){
+        System.out.println("\n Deletar Produto ");
+        gerenciador.deletarProduto(Integer.parseInt(scanner.nextLine()));
+
+    }
+    private void atualizarProduto() {
+        System.out.println("\n Atualizar Produto ");
+
+        // Solicitar informações para o produto
+        System.out.print("Informe o ID do produto que deseja atualizar: ");
+        int idProduto = scanner.nextInt();
+        scanner.nextLine();
+
     }
 }

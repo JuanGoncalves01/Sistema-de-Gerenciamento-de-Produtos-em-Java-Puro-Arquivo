@@ -26,19 +26,24 @@ public class GerenciadorProdutos  {
         return new ArrayList<>(produtos);
     }
 
-    public boolean atualizar(Produto produto) {
-        Produto existente = buscarPorId(produto.getId());
+    public boolean atualizarProduto() {
+        Produto produto= null;
+
+        Produto existente = buscarPorId( produto.getId());
+
         if (existente != null) {
-            existente.setNome(produto.getNome());
-            existente.setPreco(produto.getPreco());
-            existente.setQuantidadeEstoque(produto.getQuantidadeEstoque());
-            existente.setCategoria(produto.getCategoria());
+
+            existente.setNome( produto.getNome());
+            existente.setPreco( produto.getPreco());
+            existente.setQuantidadeEstoque( produto.getQuantidadeEstoque());
+            existente.setCategoria( produto.getCategoria());
+
             return true;
         }
         return false;
     }
 
-    public boolean deletar(int id) {
+    public boolean  deletarProduto(int id) {
         for (Produto produto : produtos) {
             if (produto.getId() == id) {
                 produtos.remove(produto);
@@ -47,5 +52,6 @@ public class GerenciadorProdutos  {
         }
         return false;
     }
+
 
 }
