@@ -1,4 +1,4 @@
-
+package com.loja.modelo;
 
 import java.util.Objects;
 
